@@ -33,7 +33,7 @@
                     <small>Already a member?  <a href="{{ route('login') }}">login</a></small>
                 </div>
                 <div class="form">
-                    <form action="{{ route('store') }}" method="POST">
+                    <form action="{{ route('store') }}" method="GET">
                         @csrf
                         <div class="form-group">
                             <input type="text" name="name" id="rname" value="{{old('name')}}" class="form-control text-bg-secondary mb-3 rounded-3" placeholder="Name" autofocus>

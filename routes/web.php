@@ -12,17 +12,18 @@ use App\Http\Controllers\LoginRegisterController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
-
 Route::get('/', function () {
     return view('employee.welcome');
 });
+*/
+
+
 
 Route::controller(LoginRegisterController::class)->group(function() {
     Route::GET('/register', 'register')->name('register');
-    Route::POST('/store', 'store')->name('store');
+    Route::GET('/store', 'store')->name('store');
     Route::GET('/login', 'login')->name('login');
-    Route::POST('/authenticate', 'authenticate')->name('authenticate');
-    Route::GET('/home', 'home')->name('home');
+    Route::GET('/authenticate', 'authenticate')->name('authenticate');
+    Route::GET('/', 'home')->name('home');
     Route::POST('/logout', 'logout')->name('logout');
 });

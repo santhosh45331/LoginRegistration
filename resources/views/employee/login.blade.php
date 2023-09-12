@@ -33,7 +33,7 @@
                     <small>Create new account - <a href="{{ route('register') }}">Sign up</a></small>
                 </div>
                 <div class="form">
-                    <form action="{{ route('authenticate') }}" method="POST">
+                    <form action="{{ route('authenticate') }}" method="GET">
                         @csrf
                         <div class="form-group">
                             <input type="email" name="email" id="lemail" value="{{old('email')}}" class="form-control text-bg-secondary mb-3 rounded-3" placeholder="Email" autocomplete="email" autofocus>

@@ -1,6 +1,20 @@
 @extends('employee.layout')
-
 @section('content')
+<nav class="navbar navbar-expand-lg bg-light">
+        <div class="container">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+                    <li class="nav-item card p-3 text-uppercase">{{ Auth::user()->name }}</li>
+                    <li class="nav-item text-uppercase ms-3">
+                        <form method="post" action="{{ route('logout') }}">
+                            @csrf
+                        <button type="submit" class="btn btn-outline-danger mt-3">Logout</button>
+                    </form>
+                </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
         <div class="card">
@@ -19,4 +33,3 @@
         </div>
     </div>    
 </div>
-@endsection
