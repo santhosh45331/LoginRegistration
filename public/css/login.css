@@ -1,0 +1,16 @@
+::placeholder{
+    color: whitesmoke !important;
+    opacity: 1 !important;
+}
+div a{
+    text-decoration: none;
+}
+.field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+    padding-right: 5px;
+    cursor: pointer;
+  }
