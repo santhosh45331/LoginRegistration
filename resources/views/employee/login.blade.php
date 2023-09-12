@@ -34,7 +34,7 @@
             <div class="col-md-6" style="padding:0px 80px 0px 80px;">
                 <div class="brand-name mb-md-5 mt-2">
                 <i class="fa-solid fa-face-smile" style="color: #ffffff;"></i>
-                <small>Employee</small>
+                <small>Ecom ADS</small>
                 </div>
                 <div class="sub-text">
                     <span>Be part of this movement.</span>
@@ -51,8 +51,8 @@
                             <input type="email" name="email" id="lemail" value="{{old('email')}}" class="form-control text-bg-secondary mb-3 rounded-3" placeholder="Email" autocomplete="email" autofocus>
                         </div>
                         <div class="form-group">
-                            <input id="lpassword" type="password" class="form-control text-bg-secondary" name="password" placeholder="Password">
-                            <span toggle="#lpassword" class="fa-regular fa-eye field-icon toggle-password"  style="color: #ffffff;"></span>
+                            <input id="lpassword" type="password" class="form-control text-bg-secondary mb-2" name="password" placeholder="Password">
+                            <input type="checkbox" onclick="showPassword()">  Show Password
                         </div>
                         <div class="text-end mt-2">
                             <a href="#">Forgot password?</a>
@@ -63,8 +63,8 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-5 pt-5">
-                <img src="{{asset('/img/login/login.gif')}}" alt="Registraction" width="420px" height="370px" class="rounded-3">
+            <div class="col-md-5 pt-5" style="margin-left:15px">
+                <img src="{{asset('/img/login/login.gif')}}" alt="Registraction" width="400px" height="auto" class="rounded-3">
             </div>
         </div>
     </div>

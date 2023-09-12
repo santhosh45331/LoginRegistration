@@ -95,7 +95,7 @@ class LoginRegisterController extends Controller
             return view('employee.home');
         }
         
-        return redirect()->route('login')->with('error','Please login to access the Home.');
+        return redirect()->route('login')->with('error','Please login to access home page');
     } 
     
     /**

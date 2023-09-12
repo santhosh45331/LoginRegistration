@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">Home</div>
             <div class="card-body">
-                @if ($message = Session::get('success'))
+                @if ($message = Session::get('Success'))
                     <div class="alert alert-success">
                         {{ $message }}
                     </div>

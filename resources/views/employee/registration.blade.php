@@ -22,7 +22,7 @@
             <div class="col-md-6" style="padding:0px 80px 0px 80px;">
                 <div class="brand-name mb-md-5 mt-2">
                 <i class="fa-solid fa-face-smile" style="color: #ffffff;"></i>
-                <small>Employee</small>
+                <small>Ecom ADS</small>
                 </div>
                 <div class="sub-text">
                     <span>Be part of this movement.</span>
@@ -42,10 +42,10 @@
                             <input type="email" name="email" id="remail" value="{{old('email')}}" class="form-control text-bg-secondary mb-3 rounded-3" placeholder="Email" autocomplete="email">
                         </div>
                         <div class="form-group">
-                            <input id="rpassword" type="password" class="form-control text-bg-secondary" name="password" value="{{old('password')}}" placeholder="Password">
-                            <!--<span toggle="#rpassword" class="fa-regular fa-eye field-icon toggle-password"  style="color: #ffffff;"></span>-->
+                            <input id="rpassword" type="password" class="form-control text-bg-secondary mb-2" name="password" value="{{old('password')}}" placeholder="Password">
+                            <input type="checkbox" onclick="showPassword()">  Show Password
                         </div>
-                        <small style="font-size:10px;">Password must contain 8 or more characters</small>
+                        
                         <br>
                         <small style="font-size:12px;">By clicking on "sign up" you are agreeing with <a href="#">Terms & Condition</a></small>
                         <br>
@@ -55,8 +55,11 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-5 pt-5">
-                <img src="{{asset('/img/registraction/regestraction.gif')}}" alt="Registraction" width="400px" height="450px" class="rounded-3">
+            <div class="col-md-5" style="margin-top: 10%;">
+                <div class="card rounded-3">
+                <img src="{{asset('/img/registraction/regestraction.webp')}}" alt="Registraction" width="400px" height="auto">
+                </div>
+                
             </div>
         </div>
     </div>
