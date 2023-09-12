@@ -19,10 +19,10 @@ Route::get('/', function () {
 });
 
 Route::controller(LoginRegisterController::class)->group(function() {
-    Route::get('/register', 'register')->name('register');
-    Route::post('/store', 'store')->name('store');
-    Route::get('/login', 'login')->name('login');
-    Route::post('/authenticate', 'authenticate')->name('authenticate');
-    Route::get('/d', 'dashboard')->name('dashboard');
-    Route::post('/logout', 'logout')->name('logout');
+    Route::GET('/register', 'register')->name('register');
+    Route::POST('/store', 'store')->name('store');
+    Route::GET('/login', 'login')->name('login');
+    Route::POST('/authenticate', 'authenticate')->name('authenticate');
+    Route::GET('/home', 'home')->name('home');
+    Route::POST('/logout', 'logout')->name('logout');
 });

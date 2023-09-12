@@ -7,6 +7,17 @@
 <div class="container rounded-3 py-5" style="background-color:#EAE5FF; margin-top:30px;">
 <div class="row  d-flex justify-content-center">
     <div class="col-md-9 text-bg-dark rounded-3">
+    @if ($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+        <strong>Error!</strong> <br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
         <div class="row">
             <div class="col-md-6" style="padding:0px 80px 0px 80px;">
                 <div class="brand-name mb-md-5 mt-2">
@@ -19,16 +30,16 @@
                 </div>
                 <h3>SIGNIN YOUR ACCOUNT</h3>
                 <div class="relogin my-3">
-                    <small>Create new account - <a href="{{URL('/registration')}}">Sign up</a></small>
+                    <small>Create new account - <a href="{{ route('register') }}">Sign up</a></small>
                 </div>
                 <div class="form">
-                    <form action="{{ route('authenticate') }}" method="post">
+                    <form action="{{ route('authenticate') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <input type="email" name="email" id="lemail" value="{{old('email')}}" class="form-control text-bg-secondary mb-3 rounded-3" placeholder="Email" autocomplete="email" autofocus>
                         </div>
                         <div class="form-group">
-                            <input id="lpassword" type="password" class="form-control text-bg-secondary" name="password" value="{{old('email')}}" placeholder="Password">
+                            <input id="lpassword" type="password" class="form-control text-bg-secondary" name="password" placeholder="Password">
                             <span toggle="#lpassword" class="fa-regular fa-eye field-icon toggle-password"  style="color: #ffffff;"></span>
                         </div>
                         <div class="text-end mt-2">

@@ -7,6 +7,17 @@
 <div class="container rounded-3 py-5" style="background-color:#EAE5FF; margin-top:30px;">
 <div class="row  d-flex justify-content-center">
     <div class="col-md-9 text-bg-dark rounded-3">
+    @if ($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+        <strong>Error!</strong> <br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
         <div class="row">
             <div class="col-md-6" style="padding:0px 80px 0px 80px;">
                 <div class="brand-name mb-md-5 mt-2">
@@ -19,23 +30,20 @@
                 </div>
                 <h3>CREATE YOUR ACCOUNT</h3>
                 <div class="relogin my-3">
-                    <small>Already a member?  <a href="/login">login</a></small>
+                    <small>Already a member?  <a href="{{ route('login') }}">login</a></small>
                 </div>
                 <div class="form">
-                    <form action="{{ route('store') }}" method="post">
+                    <form action="{{ route('store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <input type="text" name="name" id="rname" value="{{old('name')}}" class="form-control @error('name') text-bg-secondary mb-3 rounded-3" placeholder="Name" autofocus>
-                            @if ($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                            @endif
+                            <input type="text" name="name" id="rname" value="{{old('name')}}" class="form-control text-bg-secondary mb-3 rounded-3" placeholder="Name" autofocus>
                         </div>
                         <div class="form-group">
                             <input type="email" name="email" id="remail" value="{{old('email')}}" class="form-control text-bg-secondary mb-3 rounded-3" placeholder="Email" autocomplete="email">
                         </div>
                         <div class="form-group">
-                            <input id="rpassword" type="password" class="form-control text-bg-secondary" name="password" value="{{old('email')}}" placeholder="Password">
-                            <span toggle="#rpassword" class="fa-regular fa-eye field-icon toggle-password"  style="color: #ffffff;"></span>
+                            <input id="rpassword" type="password" class="form-control text-bg-secondary" name="password" value="{{old('password')}}" placeholder="Password">
+                            <!--<span toggle="#rpassword" class="fa-regular fa-eye field-icon toggle-password"  style="color: #ffffff;"></span>-->
                         </div>
                         <small style="font-size:10px;">Password must contain 8 or more characters</small>
                         <br>

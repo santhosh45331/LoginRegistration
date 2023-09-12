@@ -35,11 +35,11 @@ class LoginRegisterController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:250',
-            'email' => 'required|email|max:250|unique:users',
-            'password' => 'required|min:8|confirmed'
+            'email' => 'required|email|max:250|unique:employees',
+            'password' => 'required|min:8'
         ]);
 
-        User::create([
+        Employee::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
@@ -69,10 +69,15 @@ class LoginRegisterController extends Controller
      */
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
+
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
 
         if(Auth::attempt($credentials))
         {
@@ -89,7 +94,7 @@ class LoginRegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function dashboard()
+    public function home()
     {
         if(Auth::check())
         {
