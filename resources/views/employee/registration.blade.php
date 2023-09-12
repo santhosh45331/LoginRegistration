@@ -33,7 +33,7 @@
                     <small>Already a member?  <a href="{{ route('login') }}">login</a></small>
                 </div>
                 <div class="form">
-                    <form action="{{ route('store') }}" method="GET">
+                    <form action="{{ route('store') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <input type="text" name="name" id="rname" value="{{old('name')}}" class="form-control text-bg-secondary mb-3 rounded-3" placeholder="Name" autofocus>
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="col-md-5 pt-5">
-                <img src="{{asset('/img/registraction/regestractionimg.jpg')}}" alt="Registraction" width="400px" height="450px" class="rounded-3">
+                <img src="{{asset('/img/registraction/regestraction.gif')}}" alt="Registraction" width="400px" height="450px" class="rounded-3">
             </div>
         </div>
     </div>

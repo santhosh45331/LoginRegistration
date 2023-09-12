@@ -9,12 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginRegisterController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest')->except([
-            'logout', 'home'
-        ]);
-    }
     /**
      * Display a registration form.
      *
@@ -48,7 +42,7 @@ class LoginRegisterController extends Controller
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);
         $request->session()->regenerate();
-        return redirect()->route('home')->withSuccess('You have successfully registered & logged in!');
+        return redirect()->route('home')->with('Success','You have successfully registered & logged in!');
     }
 
     /**
@@ -82,10 +76,10 @@ class LoginRegisterController extends Controller
         if(Auth::attempt($credentials))
         {
             $request->session()->regenerate();
-            return redirect()->route('home')->withSuccess('You have successfully logged in!');
+            return redirect()->route('home')->with('Success','You have successfully logged in!');
         }
 
-        return back()->withErrors(['email' => 'Your provided credentials do not match in our records.',])->onlyInput('email');
+        return back()->with('error','Your provided credentials do not match in our records.');
 
     } 
     
@@ -101,7 +95,7 @@ class LoginRegisterController extends Controller
             return view('employee.home');
         }
         
-        return redirect()->route('login')->withErrors(['email' => 'Please login to access the dashboard.',])->onlyInput('email');
+        return redirect()->route('login')->with('error','Please login to access the Home.');
     } 
     
     /**
@@ -115,6 +109,6 @@ class LoginRegisterController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login')->withSuccess('You have logged out successfully!');;
+        return redirect()->route('login')->with('Success','logged out successfully!');;
     } 
 }

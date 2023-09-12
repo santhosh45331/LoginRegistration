@@ -20,10 +20,10 @@ Route::get('/', function () {
 
 
 Route::controller(LoginRegisterController::class)->group(function() {
-    Route::GET('/register', 'register')->name('register');
-    Route::GET('/store', 'store')->name('store');
-    Route::GET('/login', 'login')->name('login');
-    Route::GET('/authenticate', 'authenticate')->name('authenticate');
     Route::GET('/', 'home')->name('home');
+    Route::GET('/register', 'register')->name('register');
+    Route::POST('/store', 'store')->name('store');
+    Route::GET('/login', 'login')->name('login');
+    Route::POST('/authenticate', 'authenticate')->name('authenticate');
     Route::POST('/logout', 'logout')->name('logout');
 });

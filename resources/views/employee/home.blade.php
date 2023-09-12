@@ -1,4 +1,5 @@
 @extends('employee.layout')
+@section('title','Home Page')
 @section('content')
 <nav class="navbar navbar-expand-lg bg-light">
         <div class="container">
