@@ -9,11 +9,18 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginRegisterController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('guest')->except([
+            'logout', 'home'
+        ]);
+    }
+
     /**
      * Display a registration form.
-     *
-     * @return \Illuminate\Http\Response
      */
+
     public function register()
     {
         return view('employee.registration');
@@ -21,10 +28,8 @@ class LoginRegisterController extends Controller
 
     /**
      * Store a new user.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -47,9 +52,8 @@ class LoginRegisterController extends Controller
 
     /**
      * Display a login form.
-     *
-     * @return \Illuminate\Http\Response
      */
+
     public function login()
     {
         return view('employee.login');
@@ -57,10 +61,8 @@ class LoginRegisterController extends Controller
 
     /**
      * Authenticate the user.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
+
     public function authenticate(Request $request)
     {
         $request->validate([
@@ -85,25 +87,22 @@ class LoginRegisterController extends Controller
     
     /**
      * Display a dashboard to authenticated users.
-     *
-     * @return \Illuminate\Http\Response
      */
+
     public function home()
     {
-        if(Auth::check())
-        {
+        //if(Auth::check())
+        //{
             return view('employee.home');
-        }
+        //}
         
-        return redirect()->route('login')->with('error','Please login to access home page');
+        //return redirect()->route('login')->with('error','Please login to access home page');
     } 
     
     /**
      * Log out the user from application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
+    
     public function logout(Request $request)
     {
         Auth::logout();

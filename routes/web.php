@@ -13,12 +13,13 @@ use App\Http\Controllers\LoginRegisterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */ 
-
-Route::controller(LoginRegisterController::class)->group(function() {
-    Route::GET('/', 'home')->name('home');
-    Route::GET('/register', 'register')->name('register');
-    Route::POST('/store', 'store')->name('store');
-    Route::GET('/login', 'login')->name('login');
-    Route::POST('/authenticate', 'authenticate')->name('authenticate');
-    Route::POST('/logout', 'logout')->name('logout');
+Route::group(['middleware' => ['web']], function () {
+    Route::controller(LoginRegisterController::class)->group(function() {
+        Route::GET('/', 'home')->name('home');
+        Route::GET('/register', 'register')->name('register');
+        Route::POST('/store', 'store')->name('store');
+        Route::GET('/login', 'login')->name('login');
+        Route::POST('/authenticate', 'authenticate')->name('authenticate');
+        Route::POST('/logout', 'logout')->name('logout');
+});
 });
