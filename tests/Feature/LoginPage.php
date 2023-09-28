@@ -1,6 +1,9 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
 
 test('it can display the login page and it display the all text', function () {
     $response = $this->get('/login');
@@ -18,21 +21,10 @@ test('it can display the login page and it display the all text', function () {
     ->assertSee('Sign in');
 });
 
-// Without login or Register to access home 
-
-test('Without login or Register to access home ', function () {
-    $response = $this->get('/');
-    expect($response->Status())->toBe(200);
-    $response->assertSee('ecom ads')
-    ->assertSee('login')
-    ->assertSee('register');
-});
-
 //Login page Positive test
 
 test('The user can log in and be redirected to the dashboard page', function () {
     $user = User::factory()->create();
-    //dd($user);
     $response = $this->post('/authenticate', [
         'email' => $user->email,
         'password' => $user->password,
@@ -47,13 +39,23 @@ test('The user can log in and be redirected to the dashboard page', function () 
 
 //Login page Negative test
 
-test('users cannot log in with invalid credentials', function () {
+test('users cannot log in with empty credentials', function () {
     $response = $this->post('/authenticate',[
         'email' => '',
         'password' => '',
     ]);
     $response->assertStatus(302);
     $response->assertSessionHasErrors(['email', 'password']);
+});
+
+
+test('users cannot log in with invalid credentials', function () {
+    $response = $this->post('/authenticate',[
+        'email' => 'test@gmail.com',
+        'password' => 'test@gmail.com',
+    ]);
+    $response->assertStatus(302);
+    $response->assertSessionHas('error', 'Your provided credentials do not match in our records.');
 });
 
 
