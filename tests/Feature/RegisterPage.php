@@ -59,15 +59,24 @@ test('The user can register with invalid password length', function (string $pas
 //register page Positive test
 
 test('users can register with valid data', function () {
+
+    $email =  'test@example.com';
+
     $response = $this->post('/store', [
         'name' => 'Test User',
-        'email' => 'test@example.com',
+        'email' => $email,
         'password' => 'password',
     ]);
 
-    $response->assertStatus(302);
+    expect($response->Status())->toBe(302);
 
-    $this->assertDatabaseHas('users', [
-        'email' => 'test@example.com',
-    ]);
+    $findUser = User::where('email', $email)->first();
+
+    expect($findUser)->not->toBeNull();
+    expect($findUser->name)->toBe('Test User');
+    expect($findUser->email)->toBe($email);
+
+    // $this->assertDatabaseHas('users', [
+    //     'email' => 'test@example.com',
+    // ]);
 });

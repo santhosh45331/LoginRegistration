@@ -80,4 +80,7 @@
             </div>
         </div>
     @endguest
+    <div>
+        <input type="text" name="name" id="idname" class="from-controller" onkeypress="if(!(event.charCode >= 65 && event.charCode <= 122) && (event.charCode != 32 && event.charCode != 0)){ return event.preventDefault(); }">
+    </div>
 @endsection

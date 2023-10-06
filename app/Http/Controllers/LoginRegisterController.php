@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -63,12 +64,8 @@ class LoginRegisterController extends Controller
      * Authenticate the user.
      */
 
-    public function authenticate(Request $request)
+    public function authenticate(UserRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
 
         $credentials = [
             'email' => $request->email,
